@@ -7,6 +7,7 @@ p = input("please enter your password...")
 c = conn.cursor()
 
 # this sql query is vulnerable to Classic SQL bypass due to lack of sanitation!
+# ' OR 1=1--
 query = f"SELECT * FROM users WHERE username='{u}' AND password = '{p}'"
 c.execute(query)
 # this sql query prevents the Classic SQL bypass by passing the job of sanitation to the sqlite3 library
